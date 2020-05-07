@@ -1,5 +1,6 @@
 // importamos la libreria proncipal
 import processing.core.PApplet;
+import processing.core.PImage;
 
 /** Hereda de PApplet, que es la clase padre que tiene todos los métodos
 * y atributos para usar Processing
@@ -25,22 +26,31 @@ public class Imagenes extends PApplet {
         size(viewport_w, viewport_h, P2D);
         smooth(8);
     }
-
+    // declaramos el objeto para poder tener acceso en toda la clase
+    PImage theChild;
     // en este metodo tambien podemos meter configuraciones iniciales de nuestro sketch
     @Override
     public void setup() {
-    }
-
-    // método principal. Aqui estará el grueso de nuestro código
-    // sería equivalente a un 'main'
-    // la DIFERENCIA principal es que se ejecuta en bucle
-    // es decir, se repite el código infinitamente
-    @Override
-    public void draw() {
         // pintamos la ventana según rgb
         // hay muchas paginas que nos dan los colores en rgb
         // esta es una de ellas https://htmlcolorcodes.com/es/
-        // prueba a cambiar estos colores
+        // fondo de la ventana
         background(200,100,0);
+        // Necesitamos darle la ruta absoluta
+        // la función dataPath nos crea la ruta al directorio
+        // data en la raíz del proyecto
+        // inicializamos el objeto con la imagen del directorio 'data'
+        theChild = loadImage(dataPath("TheChild.png"));
+
+
+    }
+
+    // método principal.
+    // ACUERDATE: esto se repite en bucle indefinidamente
+    @Override
+    public void draw() {
+        // cargamos la imagen en la ventana en cada iteración del bucle
+        // posicionamos la imagen segun el movimiento del raton
+        image(theChild,mouseX,mouseY);
     }
 }
