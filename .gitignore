@@ -1,2 +1,4 @@
 # Project exclude paths
 /.gradle/
+/build/classes/java/main/Formas.class
+/build/classes/java/main/Imagenes.class
